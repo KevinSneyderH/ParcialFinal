@@ -279,6 +279,8 @@ if(usuarioCampo.getText().equals(usuarios[0][0])&& contraCampo.getText().equals(
 
       
 
+        
+        
         jPanelMain.removeAll();
         jPanelMain.add(sesion, BorderLayout.PAGE_START);
       
