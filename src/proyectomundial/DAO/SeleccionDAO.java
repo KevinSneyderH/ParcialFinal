@@ -7,6 +7,7 @@ package proyectomundial.DAO;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextField;
 import proyectomundial.model.Seleccion;
 import proyectomundial.util.BasedeDatos;
 import static proyectomundial.util.BasedeDatos.ejecutarSQL;
@@ -34,6 +35,56 @@ public class SeleccionDAO {
         //BasedeDatos.desconectar();
         return registro;
     }
+    
+    public List<Seleccion> InicioSesion(){
+        
+        String sql = "select * from k_hernandez8.users where username  ilike '%%' and \"password\" ilike '%%' ";
+        
+        List<Seleccion> busqueda = new ArrayList<Seleccion>();
+
+        try {
+            ResultSet result = BasedeDatos.ejecutarSQL(sql);
+
+            if (result != null) {
+
+                while (result.next()) {
+                    Seleccion seleccion = new Seleccion(result.getString("username"), result.getString("password"));
+  
+                    busqueda.add(seleccion);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            System.out.println("Error consultando selecciones");
+        }
+
+        return busqueda;
+    }
+    
+    public String[][] getBusquedaUsuarios() {
+
+        String[][] matrizSesiones = null;
+        List<Seleccion> sesiones = InicioSesion();
+
+        if (sesiones != null && sesiones.size() > 0) {
+
+            matrizSesiones = new String[sesiones.size()][7];
+
+            int x = 0;
+            for (Seleccion seleccion : sesiones) {
+
+                matrizSesiones[x][0] = seleccion.getUsername();
+                matrizSesiones[x][1] = seleccion.getContra();
+                
+                x++;
+            }
+        }
+
+        return matrizSesiones;
+    }
+    
+    
+    
     
     public List<Seleccion> getSelecciones() {
         

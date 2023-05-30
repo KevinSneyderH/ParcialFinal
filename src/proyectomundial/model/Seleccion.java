@@ -14,6 +14,9 @@ public class Seleccion {
     String continente;
     String dt;
     String nacionalidad;
+    
+    String username;
+    String contra;
 
     public Seleccion() {
     }
@@ -24,6 +27,29 @@ public class Seleccion {
         this.dt = dt;
         this.nacionalidad = nacionalidad;
     }
+    
+    public Seleccion(String username, String contra) {
+        this.username = username;
+        this.contra = contra;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getContra() {
+        return contra;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setContra(String contra) {
+        this.contra = contra;
+    }
+    
+    
 
     public String getNombre() {
         return nombre;
