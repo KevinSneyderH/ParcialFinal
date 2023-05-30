@@ -59,6 +59,9 @@ public class GUIManual extends JFrame {
     
     private JPanel jPanelMenuDashboardRes;
     private JLabel btnDashboardRes;
+    
+    private JPanel jPanelMenuSesion;
+    private JLabel btnSesion;
         
     // Elementos de panel de contenido
     private JPanel jPanelRight;
@@ -112,6 +115,9 @@ public class GUIManual extends JFrame {
         jPanelMenuDashboardRes = new JPanel();
         btnDashboardRes = new JLabel();
         
+        jPanelMenuSesion = new JPanel();
+        btnSesion = new JLabel();
+        
         // Pinta el logo de la aplicación
         pintarLogo();
         
@@ -129,6 +135,8 @@ public class GUIManual extends JFrame {
         
         // Pinta la opción de Menú del dahboard de resultados
         pintarMenuDashboardRes();
+        
+        pintarMenuSesion();
         
         // Pinta y ajuste diseño del contenedor del panel izquierdo
         pintarPanelIzquierdo();
@@ -186,12 +194,6 @@ public class GUIManual extends JFrame {
             }
         });   
     }
-    
-    /**
-     * Función que se ejecuta cuando el usuario hacer click sobre la opción de navegación Home
-     * Permite modificar la etiqueta de Navegación en Home, remover los elementos que hay en 
-     * el panel de contenidos y agregar la imagen de inicio de la aplicación
-     */
     private void accionHome() {
         
         jLabelTop.setText("Home");
@@ -209,6 +211,45 @@ public class GUIManual extends JFrame {
         jPanelMain.repaint();
         jPanelMain.revalidate();
     }
+    
+    private void pintarMenuSesion() {
+        btnHome.setIcon(new ImageIcon(getClass().getResource("/resources/icons/home.png"))); // NOI18N
+        btnHome.setText("Iniciar Sesion");
+        btnHome.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JLabel vacioHome = new JLabel();
+        jPanelMenuHome.setBackground(new java.awt.Color(17, 41, 63));
+        jPanelMenuHome.setPreferredSize((new java.awt.Dimension(220, 35)));
+        jPanelMenuHome.setLayout(new BorderLayout(15, 0));
+        jPanelMenuHome.add(vacioHome, BorderLayout.WEST);
+        jPanelMenuHome.add(btnHome, BorderLayout.CENTER);
+        jPanelMenu.add(jPanelMenuHome);
+        
+        btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                System.out.println("Inicio de Sesion");
+                accionSesion();
+            }
+        });   
+    }
+    private void accionSesion() {
+        
+       
+        
+       
+        
+        jPanelMain.removeAll();
+        
+        jPanelMain.repaint();
+        jPanelMain.revalidate();        
+    }
+    
+    /**
+     * Función que se ejecuta cuando el usuario hacer click sobre la opción de navegación Home
+     * Permite modificar la etiqueta de Navegación en Home, remover los elementos que hay en 
+     * el panel de contenidos y agregar la imagen de inicio de la aplicación
+     */
+    
     
     /**
      * Función que se encarga de ajustar los elementos gráficos que componente la opción de navegación de SELECCIONES
